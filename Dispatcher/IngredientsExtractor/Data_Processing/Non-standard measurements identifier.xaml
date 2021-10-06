@@ -1,0 +1,293 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Non_standard_measurements_identifier" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_IngredientsDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="out_ingredientsDictionary" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>832,3405.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Non_standard_measurements_identifier_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="64">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>Microsoft.Activities.Extensions.Statements</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Non_standard_measurements_identifier" sap:VirtualizedContainerService.HintSize="705.6,3240.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="ingredients" />
+      <Variable x:TypeArguments="x:Boolean" Name="match" />
+      <Variable x:TypeArguments="sd:DataTable" Name="measurementsTable" />
+      <Variable x:TypeArguments="x:String" Name="measurementsOutput" />
+      <Variable x:TypeArguments="x:Int32" Default="1" Name="counter" />
+      <Variable x:TypeArguments="sd:DataTable" Name="excelTable" />
+      <Variable x:TypeArguments="x:String" Name="ingredientsFinal" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="quantities" />
+      <Variable x:TypeArguments="x:String" Name="quantity" />
+      <Variable x:TypeArguments="s:String[]" Name="grams" />
+      <Variable x:TypeArguments="x:Int32" Name="intQuatity" />
+      <Variable x:TypeArguments="x:Int32" Name="intGrams" />
+      <Variable x:TypeArguments="x:Int32" Name="finalQuantity" />
+      <Variable x:TypeArguments="x:String" Name="splited2" />
+      <Variable x:TypeArguments="s:String[]" Name="finalSplited" />
+      <Variable x:TypeArguments="x:Int32" Name="index" />
+      <Variable x:TypeArguments="s:String[]" Name="splited" />
+      <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
+      <Variable x:TypeArguments="x:String" Name="cellValue" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="664,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_ingredientsDictionary]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[new Dictionary(Of String, Object)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_IngredientsDataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="664,2712" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="630.4,2591.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:Matches BuilderPattern="tsp|teaspoon|tbsp|tablespoon|large|cup|thick\/* slices" DisplayName="See if the row matches a non-standard measurement" sap:VirtualizedContainerService.HintSize="588.8,60" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[CurrentRow(&quot;Quantity&quot;).ToString]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;tsp|teaspoon|tbsp|tablespoon|large|cup|thick\\\/* slices&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="tsp|teaspoon|tbsp|tablespoon|large|cup|thick\/* slices" RegexOption="IgnoreCase" Result="[ingredients]" />
+            <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="588.8,2223.2" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ingredients]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="553.6,2088.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="512,262.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="C:\Users\daniel.oprea\Documents\UiPath\RecipesData\Dispatcher\Data\Input\measurements.xlsx">
+                      <ui:ExcelApplicationScope.Body>
+                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,152.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:ExcelReadRange AddHeaders="True" DataTable="[measurementsTable]" DisplayName="Read the measurements Excel table" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_3" SheetName="Sheet1">
+                              <ui:ExcelReadRange.Range>
+                                <InArgument x:TypeArguments="x:String">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                              </ui:ExcelReadRange.Range>
+                            </ui:ExcelReadRange>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ExcelApplicationScope.Body>
+                    </ui:ExcelApplicationScope>
+                    <ui:OutputDataTable DataTable="[measurementsTable]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="512,22.4" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[measurementsOutput]" />
+                    <Assign DisplayName="Split the output dataTable by newline" sap:VirtualizedContainerService.HintSize="512,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:String[]">[splited]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:String[]">[Split(measurementsOutput, Environment.NewLine)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Concatenate elements separated by &quot;,&quot;" sap:VirtualizedContainerService.HintSize="512,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[splited2]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Join(",", splited)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Split by comma" sap:VirtualizedContainerService.HintSize="512,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:String[]">[finalSplited]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:String[]">[Split(splited2, ",")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Assign the index of measurement in the item" sap:VirtualizedContainerService.HintSize="512,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[Array.IndexOf(finalSplited, item.ToString)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <If Condition="[index &lt;&gt; -1]" DisplayName="If the non-standard measurement is present in the ingredient's quantity" sap:VirtualizedContainerService.HintSize="512,1231.2" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,1052" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Matches BuilderPattern="\d|one|two|three|four|five|six|seven|eight|nine|ten" DisplayName="Split the quantity number of the ingredient" sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[CurrentRow(&quot;Quantity&quot;).ToString]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\d|one|two|three|four|five|six|seven|eight|nine|ten&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d|one|two|three|four|five|six|seven|eight|nine|ten" RegexOption="IgnoreCase" Result="[quantities]" />
+                          <Assign DisplayName="Assign the string quantity" sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[quantity]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[quantities(0).ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Convert the string quantity to int" sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[intQuatity]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(quantity)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Assign the grams number from the measurements decoder" sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="s:String[]">[grams]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="s:String[]">[Split(finalSplited(index+1), "g")]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Convert the grams to int" sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[intGrams]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(grams(0))]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Compute the final quantity" sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[finalQuantity]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[intQuatity * intGrams]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[CurrentRow("Quantity")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[finalQuantity.ToString + "g"]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,259.2" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:ExcelWriteCell Cell="[&quot;B&quot; + counter.ToString]" DisplayName="Write the converted quantity in the ingredients Excel" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="Sheet1" Text="[finalQuantity.ToString + &quot;g&quot;]" />
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                          </ui:CommentOut>
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+            <maes:AddToDictionary x:TypeArguments="x:String, x:Object" Dictionary="[out_ingredientsDictionary]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="588.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_2" Key="[CurrentRow(&quot;Name&quot;).ToString]" Value="[CurrentRow(&quot;Quantity&quot;)]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:OutputDataTable DataTable="[in_IngredientsDataTable]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="664,22.4" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[ingredientsFinal]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="664,233.6" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="271.2,155.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="229.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[ingredientsFinal]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+  </Sequence>
+</Activity>

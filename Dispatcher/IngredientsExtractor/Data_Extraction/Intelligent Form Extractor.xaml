@@ -1,0 +1,235 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Intelligent_Form_Extractor" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr/classification" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/classification" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p4="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p6="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p7="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uoa="clr-namespace:UiPath.OmniPage.Activities;assembly=UiPath.OmniPage.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_TransactionString" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>832,2803.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Intelligent_Form_Extractor_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="92">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Digitization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.OmniPage.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Classification</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DocumentClassification</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Training</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Training</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DataExtraction</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.ValidationStation</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Intelligent_Form_Extractor" sap:VirtualizedContainerService.HintSize="519.2,2638.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="p7:DocumentTaxonomy" Name="taxonomy" />
+      <Variable x:TypeArguments="x:String" Default="[in_TransactionString]" Name="imagePath" />
+      <Variable x:TypeArguments="x:String" Name="docText" />
+      <Variable x:TypeArguments="p3:Document" Name="dom" />
+      <Variable x:TypeArguments="p5:ClassificationResult[]" Name="classificationResults" />
+      <Variable x:TypeArguments="p5:ExtractionResult" Name="extractionResult" />
+      <Variable x:TypeArguments="p5:ExtractionResult" Name="validatedResult" />
+      <Variable x:TypeArguments="sd1:DataSet" Name="dataResult" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="477.6,105.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomy]" />
+    <p:DigitizeDocument DegreeOfParallelism="-1" DisplayName="Digitize Document" DocumentObjectModel="[dom]" DocumentPath="[imagePath]" DocumentText="[docText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="477.6,297.6" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+      <p:DigitizeDocument.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+          <uoa:OmniPageOCR Output="{x:Null}" Profile="{x:Null}" Text="{x:Null}" BundleType="Basic" ComputeSkewAngle="False" DisplayName="OmniPage OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,22.4" sap2010:WorkflowViewState.IdRef="OmniPageOCR_1" Image="[Image]" Language="English" Scale="0" />
+        </ActivityFunc>
+      </p:DigitizeDocument.OCREngine>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </p:DigitizeDocument>
+    <p1:ClassifyDocumentScope ClassificationResults="[classificationResults]" DisplayName="Classify Document Scope" DocumentObjectModel="[dom]" DocumentPath="[imagePath]" DocumentText="[docText]" sap:VirtualizedContainerService.HintSize="477.6,441.6" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIc42f293d5d8d4450a80570e6ec8d94fe&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;Receipe.Ingredients.Receipe&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;Receipe.Ingredients.Receipe&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UIc42f293d5d8d4450a80570e6ec8d94fe&quot;:&quot;0&quot;},&quot;DocumentTypesByPersistenceId&quot;:{&quot;UIc42f293d5d8d4450a80570e6ec8d94fe&quot;:[]}}">
+      <p1:ClassifyDocumentScope.Classifiers>
+        <p1:KeywordBasedClassifier HumanValidatedData="{x:Null}" LearningData="{x:Null}" DisplayName="Keyword Based Classifier" sap:VirtualizedContainerService.HintSize="233.6,115.2" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_1" LearningFilePath="Data_Extraction\classifier.json" PersistenceId="UIc42f293d5d8d4450a80570e6ec8d94fe">
+          <p1:KeywordBasedClassifier.ClassifierResult>
+            <OutArgument x:TypeArguments="p2:ClassifierResult">
+              <DelegateArgumentReference x:TypeArguments="p2:ClassifierResult">
+                <DelegateOutArgument x:TypeArguments="p2:ClassifierResult" Name="ClassificationResult" />
+              </DelegateArgumentReference>
+            </OutArgument>
+          </p1:KeywordBasedClassifier.ClassifierResult>
+          <p1:KeywordBasedClassifier.DocumentObjectModel>
+            <InArgument x:TypeArguments="p3:Document">
+              <DelegateArgumentValue x:TypeArguments="p3:Document">
+                <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:KeywordBasedClassifier.DocumentObjectModel>
+          <p1:KeywordBasedClassifier.DocumentPath>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:KeywordBasedClassifier.DocumentPath>
+          <p1:KeywordBasedClassifier.DocumentText>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:KeywordBasedClassifier.DocumentText>
+          <p1:KeywordBasedClassifier.DocumentTypes>
+            <InArgument x:TypeArguments="p2:ClassifierDocumentType[]">
+              <DelegateArgumentValue x:TypeArguments="p2:ClassifierDocumentType[]">
+                <DelegateInArgument x:TypeArguments="p2:ClassifierDocumentType[]" Name="DocumentTypes" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:KeywordBasedClassifier.DocumentTypes>
+        </p1:KeywordBasedClassifier>
+      </p1:ClassifyDocumentScope.Classifiers>
+    </p1:ClassifyDocumentScope>
+    <p4:DataExtractionScope DocumentTypeId="{x:Null}" ClassificationResult="[classificationResults(0)]" DisplayName="Data Extraction Scope" DocumentObjectModel="[dom]" DocumentPath="[imagePath]" DocumentText="[docText]" ExtractionResult="[extractionResult]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="477.6,490.4" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UId57eda0ccd334f83bf237f907fd5d077&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;Receipe.Ingredients.Receipe&quot;:{&quot;FieldMappings&quot;:{&quot;Receipe.Ingredients.Receipe.Ingredients&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Receipe.Ingredients.Receipe.Ingredients&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UId57eda0ccd334f83bf237f907fd5d077&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UId57eda0ccd334f83bf237f907fd5d077&quot;:[]}}">
+      <p4:DataExtractionScope.Extractors>
+        <p4:IntelligentFormExtractor SerializedSignatureFields="{x:Null}" ApiKey="3/lWpBqahGTJsX6JFhYn17PLrXaKDiKxiQKinoomicWnwHKKtD2u0/ECtHnlRIKjY9CutJIpPpbz1QggkXL2Cg==" DisplayName="Intelligent Form Extractor" Endpoint="https://du.uipath.com/svc/intelligentforms" sap:VirtualizedContainerService.HintSize="233.6,164" sap2010:WorkflowViewState.IdRef="IntelligentFormExtractor_1" MinOverlapPercentage="65" PersistenceId="UId57eda0ccd334f83bf237f907fd5d077" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[{&quot;DocumentTypeId&quot;:&quot;Recipes.Food.Ingredients&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[],&quot;BooleanSynonymsForNo&quot;:[]},{&quot;DocumentTypeId&quot;:&quot;Receipe.Ingredients.Receipe&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[],&quot;BooleanSynonymsForNo&quot;:[]}]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;Recipes.Food.Ingredients&quot;,&quot;FormId&quot;:&quot;ac5517f2&quot;,&quot;FormName&quot;:&quot;IngredientsTemplate&quot;,&quot;OriginalFileExtension&quot;:&quot;png&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,367.0,535.0],&quot;SkewAngle&quot;:0.0389,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Ingredients&quot;,&quot;Box&quot;:[5.9,6.64,140.02,27.1]},{&quot;Text&quot;:&quot;milk&quot;,&quot;Box&quot;:[125.9,116.72,36.01,16.02]},{&quot;Text&quot;:&quot;tsp&quot;,&quot;Box&quot;:[223.97,22.79,28.01,19.01]},{&quot;Text&quot;:&quot;tbsp&quot;,&quot;Box&quot;:[365.96,22.89,39.01,21.02]},{&quot;Text&quot;:&quot;oil&quot;,&quot;Box&quot;:[365.88,160.89,20.01,16.01]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Recipes.Food.Ingredients.Ingredients&quot;,&quot;Box&quot;:[2.454,1.9632,359.7546,521.7178]},{&quot;Field&quot;:&quot;Recipes.Food.Ingredients.Ingredients&quot;,&quot;Box&quot;:[33.3742,0.0,361.7178,496.1963]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;Recipes.Food.Ingredients&quot;,&quot;FormId&quot;:&quot;73015020&quot;,&quot;FormName&quot;:&quot;newTemplate&quot;,&quot;OriginalFileExtension&quot;:&quot;png&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,1877.0,987.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;I&quot;,&quot;Box&quot;:[39.0,153.0,9.0,13.0]},{&quot;Text&quot;:&quot;bbcgoodfood.com/recipes/french-toast&quot;,&quot;Box&quot;:[38.0,179.0,304.0,18.0]},{&quot;Text&quot;:&quot;Podfooci&quot;,&quot;Box&quot;:[77.0,362.0,117.0,31.0]},{&quot;Text&quot;:&quot;Recies&quot;,&quot;Box&quot;:[145.0,364.0,68.0,16.0]},{&quot;Text&quot;:&quot;Ingredients&quot;,&quot;Box&quot;:[401.0,340.0,138.0,27.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Recipes.Food.Ingredients.Ingredients&quot;,&quot;Box&quot;:[380.0061,119.7595,573.4638,571.1607]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;Recipes.Food.Ingredients&quot;,&quot;FormId&quot;:&quot;dbc4ea36&quot;,&quot;FormName&quot;:&quot;phone&quot;,&quot;OriginalFileExtension&quot;:&quot;jpg&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,1080.0,2220.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;19:27&quot;,&quot;Box&quot;:[21.0,65.0,105.0,32.0]},{&quot;Text&quot;:&quot;0&quot;,&quot;Box&quot;:[19.0,194.0,35.0,35.0]},{&quot;Text&quot;:&quot;ii€&quot;,&quot;Box&quot;:[18.0,708.0,35.0,36.0]},{&quot;Text&quot;:&quot;V&quot;,&quot;Box&quot;:[19.0,808.0,26.0,37.0]},{&quot;Text&quot;:&quot;Ingredients&quot;,&quot;Box&quot;:[485.0,64.0,380.0,69.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Recipes.Food.Ingredients.Ingredients&quot;,&quot;Box&quot;:[456.2877,33.3057,1022.48419,1159.03748]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;Receipe.Ingredients.Receipe&quot;,&quot;FormId&quot;:&quot;faf57180&quot;,&quot;FormName&quot;:&quot;bbc_good_food_Template&quot;,&quot;OriginalFileExtension&quot;:&quot;png&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,1796.0,888.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;bbcgoodfood.com/recipes/american-pancakes&quot;,&quot;Box&quot;:[15.0,163.0,358.0,18.0]},{&quot;Text&quot;:&quot;Podfix&quot;,&quot;Box&quot;:[55.0,346.0,93.0,30.0]},{&quot;Text&quot;:&quot;Recipes&quot;,&quot;Box&quot;:[122.0,348.0,68.0,20.0]},{&quot;Text&quot;:&quot;shopping&quot;,&quot;Box&quot;:[246.0,420.0,82.0,18.0]},{&quot;Text&quot;:&quot;Ingredients&quot;,&quot;Box&quot;:[477.0,324.0,138.0,27.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Receipe.Ingredients.Receipe.Ingredients&quot;,&quot;Box&quot;:[465.9003,221.0743,473.2085,407.4344]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;Receipe.Ingredients.Receipe&quot;,&quot;FormId&quot;:&quot;4cbc8404&quot;,&quot;FormName&quot;:&quot;receipe_Template&quot;,&quot;OriginalFileExtension&quot;:&quot;png&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,367.0,535.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Ingredients&quot;,&quot;Box&quot;:[6.0,8.0,138.0,27.0]},{&quot;Text&quot;:&quot;2&quot;,&quot;Box&quot;:[79.0,7.0,9.0,15.0]},{&quot;Text&quot;:&quot;1&quot;,&quot;Box&quot;:[223.0,9.0,5.0,15.0]},{&quot;Text&quot;:&quot;tsp&quot;,&quot;Box&quot;:[272.0,30.0,27.0,18.0]},{&quot;Text&quot;:&quot;tbsp&quot;,&quot;Box&quot;:[366.0,23.0,39.0,20.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Receipe.Ingredients.Receipe.Ingredients&quot;,&quot;Box&quot;:[4.4172,3.4356,361.227,527.6074]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;Receipe.Ingredients.Receipe&quot;,&quot;FormId&quot;:&quot;be5a4a3f&quot;,&quot;FormName&quot;:&quot;phone&quot;,&quot;OriginalFileExtension&quot;:&quot;jpg&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,1080.0,2220.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;ii€&quot;,&quot;Box&quot;:[18.0,708.0,35.0,36.0]},{&quot;Text&quot;:&quot;Simply&quot;,&quot;Box&quot;:[112.0,444.0,325.0,103.0]},{&quot;Text&quot;:&quot;SERVINGS&quot;,&quot;Box&quot;:[345.0,62.0,217.0,30.0]},{&quot;Text&quot;:&quot;Ingredients&quot;,&quot;Box&quot;:[485.0,64.0,380.0,69.0]},{&quot;Text&quot;:&quot;1&quot;,&quot;Box&quot;:[1064.0,113.0,14.0,39.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Receipe.Ingredients.Receipe.Ingredients&quot;,&quot;Box&quot;:[482.9323,19.9834,1039.137,1145.71521]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;Receipe.Ingredients.Receipe&quot;,&quot;FormId&quot;:&quot;465c7d10&quot;,&quot;FormName&quot;:&quot;phone2&quot;,&quot;OriginalFileExtension&quot;:&quot;jpg&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,1080.0,2220.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;23:28&quot;,&quot;Box&quot;:[20.0,63.0,107.0,34.0]},{&quot;Text&quot;:&quot;S&quot;,&quot;Box&quot;:[279.0,455.0,54.3333,104.0]},{&quot;Text&quot;:&quot;m&quot;,&quot;Box&quot;:[279.0,563.6667,54.3333,104.0]},{&quot;Text&quot;:&quot;ply&quot;,&quot;Box&quot;:[279.0,618.0,162.9999,104.0]},{&quot;Text&quot;:&quot;Ingredients&quot;,&quot;Box&quot;:[1124.0,64.0,411.0,76.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Receipe.Ingredients.Receipe.Ingredients&quot;,&quot;Box&quot;:[1277.44788,59.6319,588.3681,523.4356]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]">
+          <p4:IntelligentFormExtractor.DocumentBounds>
+            <InArgument x:TypeArguments="p5:ResultsDocumentBounds">
+              <DelegateArgumentValue x:TypeArguments="p5:ResultsDocumentBounds">
+                <DelegateInArgument x:TypeArguments="p5:ResultsDocumentBounds" Name="DocumentBounds" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p4:IntelligentFormExtractor.DocumentBounds>
+          <p4:IntelligentFormExtractor.DocumentObjectModel>
+            <InArgument x:TypeArguments="p3:Document">
+              <DelegateArgumentValue x:TypeArguments="p3:Document">
+                <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p4:IntelligentFormExtractor.DocumentObjectModel>
+          <p4:IntelligentFormExtractor.DocumentPath>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p4:IntelligentFormExtractor.DocumentPath>
+          <p4:IntelligentFormExtractor.DocumentText>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p4:IntelligentFormExtractor.DocumentText>
+          <p4:IntelligentFormExtractor.ExtractorDocumentType>
+            <InArgument x:TypeArguments="p6:ExtractorDocumentType">
+              <DelegateArgumentValue x:TypeArguments="p6:ExtractorDocumentType">
+                <DelegateInArgument x:TypeArguments="p6:ExtractorDocumentType" Name="ExtractorDocumentType" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p4:IntelligentFormExtractor.ExtractorDocumentType>
+          <p4:IntelligentFormExtractor.ExtractorResult>
+            <OutArgument x:TypeArguments="p6:ExtractorResult">
+              <DelegateArgumentReference x:TypeArguments="p6:ExtractorResult">
+                <DelegateOutArgument x:TypeArguments="p6:ExtractorResult" Name="ExtractorResult" />
+              </DelegateArgumentReference>
+            </OutArgument>
+          </p4:IntelligentFormExtractor.ExtractorResult>
+        </p4:IntelligentFormExtractor>
+      </p4:DataExtractionScope.Extractors>
+    </p4:DataExtractionScope>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="477.6,543.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,464.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <p:PresentValidationStation AutomaticExtractionResults="[extractionResult]" DisplayName="Present Validation Station" DocumentObjectModel="[dom]" DocumentPath="[imagePath]" DocumentText="[docText]" sap:VirtualizedContainerService.HintSize="333.6,372" sap2010:WorkflowViewState.IdRef="PresentValidationStation_1" Taxonomy="[taxonomy]" ValidatedExtractionResults="[validatedResult]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <p4:ExportExtractionResults DataSet="[dataResult]" DisplayName="Export Extraction Results" ExtractionResult="[extractionResult]" sap:VirtualizedContainerService.HintSize="477.6,176.8" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="False" IncludeOCRConfidence="False" />
+    <ui:ForEach x:TypeArguments="sd1:DataTable" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="477.6,250.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[dataResult.Tables]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="sd1:DataTable">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd1:DataTable" Name="item" />
+          </ActivityAction.Argument>
+          <ui:WriteRange AddHeaders="True" DataTable="[item]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="C:\Users\daniel.oprea\Documents\UiPath\RecipesData\Dispatcher\Data\Output\extractedIngredients.xlsx" />
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+  </Sequence>
+</Activity>
